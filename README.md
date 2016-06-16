@@ -51,6 +51,8 @@ I wrote this script so that others would not have to manually create each and ev
 9. **Click** the Save button
 10. Instructions complete, happy meetings!
 
+_please note, make sure you do not already have a folder named meeting notes in your drive, if you do, this script will place all of your notes inside that folder.  If you do already have a folder, change the name of the folder "meeting notes" in the script to something unique._
+
 ## Tests
 
 A couple of quick notes on the way this script works:
