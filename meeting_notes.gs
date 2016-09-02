@@ -56,7 +56,7 @@ function createMeetingNotesNextTimePeriod() {
   //<--------------------GET EVENTS/ATTRIBUTES FOR TIME PERIOD FROM NOW--------------------->
   
   
-  // retrieve all calendar events for today
+  // retrieve all calendar events for time period
   var events = CalendarApp.getDefaultCalendar().getEvents(now, period_from_now) ;
   
   Logger.log('Number of events: ' + events.length);
@@ -83,7 +83,7 @@ function createMeetingNotesNextTimePeriod() {
     Logger.log('file_exists: ' + file_exists);
     
     // check to see if file already exists, if does skip if loop
-    if (file_exists == false) {
+    if ((file_exists == false) && (guestlist.length >= 1)) {
       var doc = DocumentApp.create(title);
       Logger.log(title + ' was created');
      
@@ -94,7 +94,7 @@ function createMeetingNotesNextTimePeriod() {
       var doc_2 = DriveApp.getFilesByName(title).next().getId() ;
       var doc_copy = DocumentApp.openById(doc_2);
     
-      // go through event guests and get their emails and status
+      // loop through event guests and get their emails and status
       for (var j=0;j<guestlist.length;j++) {
         doc_copy.getBody().appendParagraph(guestlist[j].getEmail() + ': ' + guestlist[j].getGuestStatus());
       }
@@ -134,4 +134,3 @@ function createMeetingNotesNextTimePeriod() {
   }  // for loop for each event 
 
 }  // functionCreateMeetingNotesNextTimePeriod
-
